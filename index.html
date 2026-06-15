@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="profile.jpg" type="image/x-icon">
+    <title>twigo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- header section -->
+    <div class="logo">
+        <img src="profile.jpg" alt="Logo">
+        <h1><strong>T</strong>alk<i>loop</i></h1>
+        <marquee behavior="scroll" direction="left">
+            <h2>Welcome to <strong>Talk-loop</strong> </h2>
+        </marquee>
+        <div class="theme">
+            <input id="theme-toggle" aria-pressed="false" type="button" value="Dark mode" onclick="toggleTheme()">
+        </div>
+    </div>
+
+    <!-- main section -->
+    <div class="main">
+        <div class="search">
+            <input type="search" name="search" id="search" placeholder="Search user name . . . .">
+            <i class="fa-solid fa-search fa-lg"></i>
+        </div>
+        <div class="list">
+            <section class="users" onclick="selectUser('demo user 1')">
+                <img src="profile.jpg" alt="" class="pic" id="profilePic">
+                <label for="msg">demo user 1 </label>
+            </section>
+            <section class="users" onclick="selectUser('demo user 2')">
+                <img src="profile.jpg" alt="" id="profilePic">
+                <label for="msg">demo user 2</label>
+            </section>
+            <section class="users" onclick="selectUser('demo user 3')">
+                <img src="profile.jpg" alt="" id="profilePic">
+                <label for="msg">demo user 3</label>
+            </section>
+            <section class="users" onclick="selectUser('mithu 4')">
+                <img src="profile.jpg" alt="" id="profilePic">
+                <label for="msg">mithu 4</label>
+            </section>
+            <section class="users" onclick="selectUser('demo user 5')">
+                <img src="profile.jpg" alt="" id="profilePic">
+                <label for="msg">demo user 5</label>
+            </section>
+            <section class="users" onclick="selectUser('demo user 6')">
+                <img src="profile.jpg" alt="user1" id="profilePic">
+                <label for="msg">demo user 6</label>
+            </section>
+            <section class="users" onclick="selectUser('demo user 7')">
+                <img src="profile.jpg" alt="user1" id="profilePic">
+                <label for="msg">demo user 7</label>
+            </section>
+            <section class="users" onclick="selectUser('demo user 8')">
+                <img src="profile.jpg" alt="user1" id="profilePic">
+                <label for="msg">demo user 8</label>
+            </section>
+            <section class="users" onclick="selectUser('demo user 9')">
+                <img src="profile.jpg" alt="user1" id="profilePic">
+                <label for="msg">demo user 9</label>
+            </section>
+            <section class="users" onclick="selectUser('demo user 10')">
+                <img src="profile.jpg" alt="user1" id="profileImg">
+                <label for="msg">demo user 10</label>
+            </section>
+            <section class="users" onclick="selectUser('demo user 11')">
+                <img src="profile.jpg" alt="user1" id="profilePic">
+                <label for="msg">demo user 11</label>
+            </section>
+            <section class="users" onclick="selectUser('demo user 12')">
+                <img src="profile.jpg" alt="user1" id="profilePic">
+                <label for="msg">demo user 12</label>
+            </section>
+            <section class="users" onclick="selectUser('demo user 13')">
+                <img src="profile.jpg" alt="user1" id="profilePic">
+                <label for="msg">demo user 13</label>
+            </section>
+            <section class="users" onclick="selectUser('demo user 14')">
+                <img src="profile.jpg" alt="user1" id="profilePic">
+                <label for="msg">demo user 14</label>
+            </section>
+        </div>
+
+        <div class="chat">
+            <div class="chatBtmP" id="chatBtmP">
+                <div class="left">
+                    <img src="profile.jpg" alt="user1" id="profilePic">
+                    <spam>Demo user 4</spam>
+                </div>
+                <div class="right">
+                    <a href="https://wa.me/7903558438" target="_blank"><i class="fa-solid fa-video fa-2xl"></i></a>
+                    <a href="https://wa.me/7903558438" target="_blank"><i class="fa-solid fa-phone fa-xl"></i></a>
+                    <a href="#"><i class="fa-solid fa-ellipsis fa-2xl fa-rotate-90"></i></a>
+                </div>
+            </div>
+            <!-- user info  -->
+            <nav class="info">
+                <div class="profile-content">
+                    <img src="profile.jpg" alt="Profile Picture" id="profilePic">
+                    <h4>Demo user 5</h4>
+                    <section>
+                        <i class="fa-solid fa-save"></i>
+                        <i class="fa-solid fa-video"></i>
+                        <i class="fa-solid fa-phone"></i>
+                        <i class="fa-solid fa-search"></i>
+                    </section>
+                </div>
+                <hr>
+                <section class="options">
+                    <div class="opt1">&#127942;My match</div>
+                    <div class="arrow">&#9654;</div>
+                </section>
+                <hr>
+                <section class="options">
+                    <div class="opt2">&#128179; My subscriptions</div>
+                    <div class="arrow">&#9654;</div>
+                </section>
+                <hr>
+                <section class="options">
+                    <div class="opt3">&#128276; Reminder notifications</div>
+                    <div class="arrow">
+                        <label class="toggle">
+                            <input type="checkbox" id="myToggle">
+                            <span class="slider"></span>
+                        </label>
+                        <span id="status">OFF</span>
+
+                    </div>
+                </section>
+                <hr>
+                <section class="options">
+                    <div class="opt4">&#128337; watch history</div>
+                    <div class="arrow">&#9654;</div>
+                </section>
+                <hr>
+                <section class="options">
+                    <div class="opt5">&#10067; help & support</div>
+                    <div class="arrow">&#9654;</div>
+                </section>
+                <hr>
+                <section class="options">
+                    <div class="opt6">&#9211; Logout</div>
+                    <div class="logout">&#9211;</div>
+                </section>
+            </nav>
+            <div class="message">
+                <marquee behavior="link" direction="left" scrollamount="10">This is a simple <em>demo</em> message.....
+                </marquee>
+
+                <div class="message-left">
+                    <h6>You</h6>
+                    <p>Hello! How are you?</p>
+                </div>
+                <div class="message-right">
+                    <h6>Demo user 4</h6>
+                    <p>Hello! How are you?</p>
+                </div>
+
+
+                <marquee behavior="link" direction="RIGHT" scrollamount="10">This is a simple <em>demo</em> message.....
+                </marquee>
+
+                <div class="message-left">
+                    <h6>You</h6>
+                    <p>Hello! How are you?</p>
+                </div>
+                <div class="message-right">
+                    <h6>Demo user 4</h6>
+                    <p>Hello! How are you?</p>
+                </div>
+                <div id="messages"></div>
+
+            </div>
+
+            <marquee behavior="link" direction="left" scrollamount="10" class="btn">This is a simple <em>demo</em>
+                message.....</marquee>
+            <marquee behavior="link" direction="right" scrollamount="10" class="btn">This is a simple <em>demo</em>
+                message.....</marquee>
+
+            <i class="fa-solid fa-arrow-down" id="arrow-down"></i>
+
+            <div class="chatBtmL">
+                <input type="text" name="msg" id="msgs" placeholder="Type your message here...">
+                <button type="submit" id="sendBtn" onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </div>
+    <script src="javascript.js"></script>
+</body>
+
+</html>
