@@ -394,25 +394,8 @@ function sendMessage() {
 }
 
 //if change user then change hole data of user(number, name, ) the chatBtmP data
-function updateChatBottomData(user) {
-    const chatBtmP = document.getElementById('chatBtmP');
-    if (!chatBtmP) return;
-    
-    const userNameEl = chatBtmP.querySelector('.user-name') || chatBtmP.querySelector('.name');
-    const userNumberEl = chatBtmP.querySelector('.user-number') || chatBtmP.querySelector('.number');
-    const userStatusEl = chatBtmP.querySelector('.user-status') || chatBtmP.querySelector('.status');
-    
-    if (userNameEl) userNameEl.textContent = user;
-    if (userNumberEl) userNumberEl.textContent = '';
-    if (userStatusEl) userStatusEl.textContent = 'Active';
-}
 
-function selectUser(user) {
-    currentUser = user;
-    const leftEl = document.querySelector('.left');
-    if (leftEl) leftEl.textContent = user;
-    const messagesEl = document.getElementById('messages');
-    if (messagesEl) messagesEl.innerHTML = '';
-    updateChatBottomData(user);
-}
+
+
+
 
