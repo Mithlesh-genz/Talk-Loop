@@ -14,9 +14,6 @@ body {
     margin: 0px;
 }
 
-.main {
-    display: none;
-}
 
 .logo {
     height: 60px;
@@ -93,6 +90,20 @@ body {
 .container-sign-in {
     display: flex;
     justify-content: center;
+    display: none;
+}
+
+@media screen and (max-width: 716px) {
+    .container-sign-in {
+        display: flex;
+        justify-content: center;
+        display: none;
+    }
+
+    .sign-in:hover {
+        box-shadow: 0 20px 40px rgb(7, 2, 6);
+    }
+
 }
 
 .sign-in {
@@ -302,6 +313,7 @@ section img {
         top: 20px;
         padding: auto;
         margin: 0px;
+        padding: 0;
         border-radius: 5px;
     }
 
@@ -333,13 +345,13 @@ section img {
         background-color: transparent;
         border-radius: 5px;
         width: 98%;
+        margin: 1%;
         height: 93vh;
         overflow-y: scroll;
     }
 
     .list section {
         margin-top: 10px;
-        margin: 2%;
         text-align: left;
         width: 98%;
         height: 50px;
