@@ -6,7 +6,7 @@ function applyTheme(theme) {
     const isDark = theme === 'dark';
     if (isDark) {
         body.classList.add('dark-mode');
-        body.style.backgroundColor = '#211f1fb4';
+        body.style.backgroundColor = '#211f1f56';
         const chatBtmP = document.getElementById('chatBtmP');
         const msgInput = document.getElementById('msgs');
         const sendBtn = document.getElementById('sendBtn');
