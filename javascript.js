@@ -6,7 +6,7 @@ function applyTheme(theme) {
     const isDark = theme === 'dark';
     if (isDark) {
         body.classList.add('dark-mode');
-        body.style.backgroundColor = '#211f1f56';
+        body.style.backgroundImage = '';
         const chatBtmP = document.getElementById('chatBtmP');
         const msgInput = document.getElementById('msgs');
         const sendBtn = document.getElementById('sendBtn');
@@ -21,7 +21,11 @@ function applyTheme(theme) {
         if (chatBtmP) {
             chatBtmP.style.backgroundColor = '#211f1fb4';
         }
-        body.style.backgroundImage = '';
+        body.style.backgroundImage = "";
+        body.style.backgroundRepeat = 'no-repeat';
+        body.style.backgroundPosition = 'center';
+        body.style.backgroundSize = 'cover';
+        body.style.backgroundAttachment = 'fixed';
         localStorage.setItem('theme', 'dark');
     } else {
         body.classList.remove('dark-mode');
@@ -356,6 +360,13 @@ if (document.readyState !== "loading") {
 } else {
     document.addEventListener('DOMContentLoaded', initializeUserSearch);
 };
+
+//search button logic
+
+
+
+
+
 
 
 

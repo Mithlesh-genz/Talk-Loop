@@ -29,12 +29,27 @@
             <h2>welcome to Talk loop</h2>
             <div class="box-data">
                
-                <input type="tel" name="phone" id="phone" required>
+                <input type="tel" name="phone" id="phone" maxlength="10" minlength="10" required>
                 <label>Enter your Phone No.</label>
             </div>
             <button type="submit">Send OTP</button>
         </form>
     </nav>
+
+    <!-- sign-in page otp verification -->
+    <nav class="container-otp">
+        <form action="" class="otp-table">
+            <h2>Verify otp</h2>
+            <div class="otp-data">
+    
+                <input type="tel" name="phone" id="phone" maxlength="5" minlength="4" required>
+                <label>Enter Opt</label>
+            </div>
+            <button type="submit">verify</button>
+        </form>
+    </nav>
+
+
     <!-- main section -->
     <div class="main">
         <div class="search">
@@ -97,6 +112,14 @@
             <section class="users" onclick="selectUser('demo user 14')">
                 <img src="profile.jpg" alt="user1" id="profilePic">
                 <label for="msg">demo user 14</label>
+            </section>
+            <section class="users" onclick="selectUser('demo user 15')">
+                <img src="profile.jpg" alt="user1" id="profilePic">
+                <label for="msg">demo user 15</label>
+            </section>
+            <section class="users" onclick="selectUser('demo user 16')">
+                <img src="profile.jpg" alt="user1" id="profilePic">
+                <label for="msg">demo user 16</label>
             </section>
         </div>
 

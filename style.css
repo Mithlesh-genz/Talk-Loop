@@ -8,6 +8,7 @@ body {
     font-family: 'Arial', sans-serif;
     display: flex;
     flex-direction: column;
+    background-image: url(imageblank.jpg);
     background-size: cover;
     background-attachment: fixed;
     overflow: hidden;
@@ -18,7 +19,7 @@ body {
 .logo {
     height: 60px;
     color: #a81212;
-    background-color: #37353571;
+    background-color: #3735358a;
     display: flex;
     align-items: center;
 }
@@ -86,27 +87,31 @@ body {
 }
 
 
+
 /* sign in page */
-.container-sign-in {
+.container-sign-in,
+.container-otp {
     display: flex;
     justify-content: center;
-    display: none;
+    
 }
 
 @media screen and (max-width: 716px) {
-    .container-sign-in {
+
+    .container-sign-in,
+    .container-otp {
         display: flex;
         justify-content: center;
-        display: none;
     }
 
-    .sign-in:hover {
+    .sign-in:hover .otp-table:hover {
         box-shadow: 0 20px 40px rgb(7, 2, 6);
     }
 
 }
 
-.sign-in {
+.sign-in,
+.otp-table {
     width: 450px;
     padding: 40px;
     background: transparent;
@@ -118,22 +123,26 @@ body {
     margin: 10%;
 }
 
-.sign-in:hover {
+.sign-in:hover,
+.otp-table:hover {
     box-shadow: 0 20px 40px rgb(7, 2, 6);
 }
 
-.sign-in h2 {
+.sign-in h2,
+.otp-table h2 {
     text-align: center;
     margin-bottom: 30px;
 }
 
-.box-data {
+.box-data,
+.otp-data {
     margin-bottom: 20px;
     position: relative;
     /* container for absolute label positioning */
 }
 
-.sign-in input {
+.sign-in input,
+.otp-table input {
     width: 100%;
     padding: 15px;
     background: transparent;
@@ -143,7 +152,8 @@ body {
     outline: none;
 }
 
-.box-data label {
+.box-data label,
+.otp-data label {
     position: absolute;
     left: 12px;
     top: 12px;
@@ -160,23 +170,26 @@ body {
 .box-data input:focus+label,
 .box-data input:focus~label,
 .box-data input:valid+label,
-.box-data input:valid~label {
+.box-data input:valid~label,
+.otp-data input:focus+label,
+.otp-data input:focus~label,
+.otp-data input:valid+label,
+.otp-data input:valid~label {
     top: -10px;
     left: 8px;
     font-size: 12px;
-    color: #aea4a4;
+    color: #111010;
 }
 
-.sign-in input {
+.sign-in input,
+.otp-table input {
     color: #fff;
     border-bottom-color: rgba(255, 255, 255, 0.18);
 }
 
-.sign-in button {
+.sign-in button,
+.otp-table button {
     color: #fff;
-}
-
-.sign-in button {
     width: 100%;
     padding: 14px;
     border-radius: 50px;
@@ -191,6 +204,10 @@ button:hover {
 }
 
 /* main section */
+.main{
+    display: none;
+}
+
 main {
     display: flex;
     flex-direction: column;
@@ -338,11 +355,11 @@ section img {
         margin: 0 1%;
     }
 
-        .search i {
-            position: relative;
-            top: 20px;
-            left: 90%;
-        }
+    .search i {
+        position: relative;
+        top: 20px;
+        left: 90%;
+    }
 
     .list {
         display: flex;
@@ -482,7 +499,7 @@ section img {
     font-size: 20px;
     cursor: pointer;
     margin-left: 20px;
-    color: #3007ab;
+    color: #07e30a;
 }
 
 .chat .chatBtmP img {
