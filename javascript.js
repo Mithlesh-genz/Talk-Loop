@@ -128,9 +128,29 @@ function sendMessage() {
     const message = messageInput.value.trim();
     if (!message) return;
 
-    appendMessage("You", message, "left");
-    messageInput.value = "";
-    messageInput.focus();
+    if (messageContainer) {
+        appendMessage("You", message, "left");
+        messageContainer.scrollTop = messageContainer.scrollHeight;
+    } else {
+        const messagesEl = document.getElementById('messages');
+        if (!messagesEl) return;
+        const p = document.createElement('p');
+        const b = document.createElement('b');
+        b.textContent = 'you:';
+        p.appendChild(b);
+        p.appendChild(document.createTextNode(' ' + message));
+        messagesEl.appendChild(p);
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+        senderLabel.style.color = align === "right" ? "#e04b4b" : "#777";
+        senderLabel.style.fontWeight = "400";
+        senderLabel.style.fontSize = "0.8em";
+        senderLabel.style.margin = "0 0 4px 0";
+    }
+
+    inputEl.value = "";
+    if (typeof inputEl.focus === 'function') {
+        inputEl.focus();
+    }
 }
 
 function receiveMessage(message, sender) {
@@ -179,8 +199,12 @@ function updateArrowBottomVisibility() {
 }
 
 function initializeChat() {
-    submitbutton = document.querySelector(".send, .send-btn, .submit-button, button[type='submit'], input[type='submit']");
-    messageInput = document.querySelector("#msg, input[name='msg'], textarea[name='msg'], input[placeholder*='message'], textarea, input[type='text']");
+    submitbutton =
+        document.getElementById("sendBtn");
+    messageInput =
+        document.getElementById(
+            "msgs"
+        );
     messageContainer = document.querySelector(".message, .messages, .chat-messages, .chat-container");
     loginPage = document.querySelector(".login-page") || document.getElementById("login-page");
     loginButton = document.querySelector(".login-button") || document.getElementById("login-button");
@@ -240,6 +264,28 @@ function sendDemoMessagesSequentially(messages, delayMs) {
 sendDemoMessagesSequentially(demoMessages, 5000);
 
 
+//arrow logic
+arrowBottom =
+    document.getElementById(
+        "arrow-down"
+    );
+
+if (arrowBottom) {
+
+    arrowBottom.onclick =
+        () => {
+
+            const msg =
+                document.querySelector(
+                    ".message"
+                );
+
+            msg.scrollTop =
+                msg.scrollHeight;
+        };
+}
+
+
 //profile pic zoom logic
 let currentZoomedProfilePic = null;
 
@@ -296,7 +342,10 @@ profilePics.forEach((profilePic) => {
 
 //searching logic for user search for list class 
 function initializeUserSearch() {
-    const userSearchInput = document.querySelector("#userSearch, .user-search, input[name='search'], input[placeholder*='Search'], input[placeholder*='search']");
+    const userSearchInput =
+        document.getElementById(
+            "search"
+        );
     let userListItems = document.querySelectorAll(".user-item, .user-list-item, .user, .contact, li");
     if (userListItems.length === 0) {
         userListItems = document.querySelectorAll("section");
@@ -361,52 +410,319 @@ if (document.readyState !== "loading") {
     document.addEventListener('DOMContentLoaded', initializeUserSearch);
 };
 
-//search button logic
 
 
+/* ==========================================
+FIREBASE CONFIG
+========================================== */
+
+const firebaseConfig = {
+
+    apiKey: "YOUR_API_KEY",
+
+    authDomain:
+        "YOUR_PROJECT.firebaseapp.com",
+
+    projectId:
+        "YOUR_PROJECT_ID",
+
+    appId:
+        "YOUR_APP_ID"
+
+};
+
+if (
+    typeof firebase !== "undefined" &&
+    !firebase.apps.length
+) {
 
 
+    firebase.initializeApp(
+        firebaseConfig
+    );
 
-
-
-
-//user selection logic
-let currentUser = "";
-
-function selectUser(user) {
-    currentUser = user;
-    const leftEl = document.querySelector('.left');
-    if (leftEl) leftEl.textContent = user;
-    const messagesEl = document.getElementById('messages');
-    if (messagesEl) messagesEl.innerHTML = '';
 }
 
-function sendMessage() {
-    const textEl = document.getElementById('msgs');
-    if (!textEl) return;
-    const text = textEl.value;
+const auth =
+    typeof firebase !== "undefined"
+        ? firebase.auth()
+        : null;
 
-    if (currentUser === "") {
-        alert('Select a user first');
+/* ==========================================
+SECTION CONTROL
+========================================== */
+
+function showLoginSection() {
+
+
+    const login = document.querySelector(".container-sign-in");
+
+    const otp = document.querySelector(".container-otp");
+
+    const main = document.querySelector(".main");
+
+    if (login) {
+        login.style.display = "block";
+        otp.style.display = "none";
+        main.style.display = "none";
+    }
+}
+function showOtpSection() {
+
+    const login =
+        document.querySelector(
+            ".container-sign-in"
+        );
+
+    const otp =
+        document.querySelector(
+            ".container-otp"
+        );
+
+    const main =
+        document.querySelector(
+            ".main"
+        );
+
+    if (otp) {
+        otp.style.display = "block";
+        login.style.display = "none";
+        main.style.display = "none";
+    }
+}
+
+function showMainSection() {
+
+
+    const login =
+        document.querySelector(
+            ".container-sign-in"
+        );
+
+    const otp =
+        document.querySelector(
+            ".container-otp"
+        );
+
+    const main =
+        document.querySelector(
+            ".main"
+        );
+    if (main) {
+        main.style.display = "block";
+        login.style.display = "none";
+        otp.style.display = "none";
+    }
+
+}
+
+/* ==========================================
+LOGIN
+========================================== */
+
+function isValidMobileNumber(
+    number
+) {
+
+    return /^[0-9]{10}$/.test(
+        number
+    );
+
+
+}
+
+function handleLoginSubmit(
+    event
+) {
+
+    event.preventDefault();
+
+    const phoneInput =
+        document.querySelector(
+            'input[name="phone"]'
+        );
+
+    if (!phoneInput) return;
+
+    const mobile =
+        phoneInput.value.trim();
+
+    if (
+        !isValidMobileNumber(
+            mobile
+        )
+    ) {
+
+        alert(
+            "Enter valid mobile number"
+        );
+
         return;
     }
-    if (text.trim() !== "") {
-        const messagesEl = document.getElementById('messages');
-        if (messagesEl) {
-            const p = document.createElement('p');
-            const b = document.createElement('b');
-            b.textContent = 'you:';
-            p.appendChild(b);
-            p.appendChild(document.createTextNode(' ' + text));
-            messagesEl.appendChild(p);
-        }
-        textEl.value = '';
+
+    sessionStorage.setItem(
+        "talkloopMobileNumber",
+        mobile
+    );
+
+    if (!auth) {
+
+        showOtpSection();
+
+        return;
+    }
+
+    try {
+
+        const phone =
+            "+91" + mobile;
+
+        window.recaptchaVerifier =
+            new firebase.auth.RecaptchaVerifier(
+                "recaptcha-container"
+            );
+
+        confirmationResultGlobal =
+            await auth.signInWithPhoneNumber(
+                phone,
+                window.recaptchaVerifier
+            );
+
+        showOtpSection();
+
+    } catch (err) {
+
+        console.error(err);
+
+        alert(
+            "OTP sending failed"
+        );
     }
 }
 
-//if change user then change hole data of user(number, name, ) the chatBtmP data
+function handleOtpSubmit(
+    event
+) {
+    event.preventDefault();
+
+    const otpInput =
+        document.querySelector(
+            '#otp,input[name="otp"]'
+        );
+
+    if (!otpInput) return;
+
+    const otp =
+        otpInput.value.trim();
+
+    if (
+        !/^[0-9]{6}$/.test(
+            otp
+        )
+    ) {
+
+        alert(
+            "Enter valid OTP"
+        );
+
+        return;
+    }
+
+    try {
+
+        if (
+            confirmationResultGlobal
+        ) {
+
+            await confirmationResultGlobal.confirm(
+                otp
+            );
+        }
+
+        sessionStorage.setItem(
+            "talkloopOtpVerified",
+            "true"
+        );
+
+        showMainSection();
+
+    } catch (err) {
+
+        console.error(err);
+
+        alert("Invalid OTP");
+    }
+}
+
+function handleLogout() {
+    sessionStorage.clear();
+
+    if (auth) {
+
+        auth.signOut();
+    }
+
+    showLoginSection();
+}
 
 
+//logout logic
+function handleLogout() {
+
+    sessionStorage.clear();
+
+    showLoginSection();
+
+    const loginForm =
+        document.querySelector(
+            ".sign-in"
+        );
+
+    const otpForm =
+        document.querySelector(
+            ".otp-table"
+        );
+
+    if (loginForm)
+        loginForm.reset();
+
+    if (otpForm)
+        otpForm.reset();
+}
 
 
+//initialize
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        initializeLoginFlow();
+
+        initializeChat();
+
+        initializeUserSearch();
+
+        initializeProfilePicZoom();
+
+        initializeNotificationToggle();
+
+        applyTheme(
+            localStorage.getItem(
+                "theme"
+            ) || "light"
+        );
+
+        const logout =
+            document.querySelector(
+                ".opt6"
+            );
+
+        if (logout) {
+
+            logout.addEventListener(
+                "click",
+                handleLogout
+            );
+        }
+    });
 

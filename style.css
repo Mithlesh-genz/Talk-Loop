@@ -93,7 +93,7 @@ body {
 .container-otp {
     display: flex;
     justify-content: center;
-    
+    display: none;
 }
 
 @media screen and (max-width: 716px) {
@@ -204,10 +204,6 @@ button:hover {
 }
 
 /* main section */
-.main{
-    display: none;
-}
-
 main {
     display: flex;
     flex-direction: column;
